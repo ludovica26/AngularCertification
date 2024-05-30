@@ -1,0 +1,26 @@
+<ng-container>
+    <h1>Step 1: Choose your Model and color</h1>
+    <form [formGroup]="formStepOne">
+        <!--Model select-->
+    <label for="modelSelect">Model: </label>
+    <select formControlName="model"
+         id="modelSelect" name="modelSelect" 
+        (change)="selectedModel()">
+        <option value="">choose a model</option>
+        <option  *ngFor="let model of modelList"
+        [value]="model.code">{{model.description}}</option>
+    </select>
+    <!--Color select-->
+    <ng-container *ngIf="model.value">
+    <label for="colorSelect">Color: </label>
+    <select formControlName="color"
+         id="colorSelect" name="colorSelect"
+        (change)="selectedColor()">
+        <option value="">choose a color</option>
+        <option  *ngFor="let color of colorList" 
+        [value]="color.code">{{color.description}}</option>
+    </select>
+    </ng-container>
+</form>
+ 
+</ng-container>

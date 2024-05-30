@@ -1,0 +1,5 @@
+<div class="step-container">
+    <button class="step-button" id="step1" tabindex="0" [routerLink]="['']">Step 1</button>
+    <button class="step-button" id="step2" tabindex="0"[routerLink]="['/option']" [disabled]="isStepTwo">Step 2</button>
+    <button class="step-button" id="step3" tabindex="0" [routerLink]="['/recap']" [disabled]="isStepThree">Step 3</button>
+</div>

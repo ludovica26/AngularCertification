@@ -1,0 +1,29 @@
+<div class="recap-container">
+    <h1>Step 3: Summary</h1>
+    <h2>{{modal}}</h2>
+    <div class="recap-container-info">
+        <span>{{option?.option?.description}} </span>
+        <span>{{option?.option?.price | currency:'USD'}} </span>
+    </div>
+    <div class="recap-cntainer-info-option">
+        <span>Range: {{option?.option?.range}} range - Max speed: {{option?.option?.speed}} </span>
+    </div>
+    <div class="recap-container-info">
+        <span>{{color?.description}} </span>
+        <span>{{color?.price | currency:'USD'}} </span>
+    </div>
+    <div  *ngIf="option?.towHitch?.isSelected" class="recap-container-info">
+        <span>Tow Hitch Package: </span>
+        <span>{{1000 | currency:'USD'}} </span>
+    </div>
+    <div  *ngIf="option?.yoke?.isSelected" class="recap-container-info">
+        <span>Yoke Steering wheel Package: </span>
+        <span>{{1000 | currency:'USD'}} </span>
+    </div>
+    <hr>
+    <div class="recap-container-info">
+        <span>TOTAL COST: </span>
+        <span>{{total | currency:'USD'}} </span>
+    </div>
+    <hr>
+</div>
