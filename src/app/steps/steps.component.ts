@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CommonService } from '../shared/services/common.services';
 import { CommonModule } from '@angular/common';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-steps',
@@ -22,14 +23,15 @@ export class StepsComponent implements OnInit {
   isStepThree: boolean = true;
   /**boolean to defined enabled or disalbed button step two */
   isStepTwo: boolean = true;
-
+  stepOneSub!: Subscription;
+  stepTwoSub!: Subscription;
   /**
    * open sabscription stepOne for lissen the change value and 
    * anabled or disabled step two and three
    */
   ngOnInit(): void {
 
-    this.commonService.stepOne.subscribe(value => {
+    this.stepOneSub = this.commonService.stepOne.subscribe(value => {
       if (value) {
         this.isStepTwo = false;
       } else {
@@ -46,5 +48,11 @@ export class StepsComponent implements OnInit {
       }
     })
   }
-  //destroy
+  /**
+ * close the subscription stepTwoSub and stepOneSub
+ */
+  ngOnDestroy(): void {
+    this.stepTwoSub?.unsubscribe();
+    this.stepOneSub?.unsubscribe();
+  }
 }
